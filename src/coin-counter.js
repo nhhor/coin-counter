@@ -1,4 +1,3 @@
-// const coins = [25, 10, 5, 1];
 const userValue = 1.29;
 const userValueInPennies = Math.floor(100 * userValue); //89!!!
 
@@ -51,3 +50,19 @@ const pennies = (element) => {
 console.log(userValueInPennies);
 pennies(nickels(dimes(quarters(userValueInPennies))));
 console.log(`Coins: ${coinArray}`);
+
+
+// -------------------------------------------------------
+
+
+
+// THANKSM LIAM...
+const recu = (v, arr, i) => {
+  if (i === coins.length) return arr;
+  const timesIn = (Math.floor(v / coins[i]));
+  const rem = v - (timesIn * coins[i]);
+  arr.push(timesIn);
+  return recu(rem, arr, i+1);
+}
+
+console.log(recu(userValueInPennies,[],0));
